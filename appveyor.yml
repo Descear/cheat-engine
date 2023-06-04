@@ -28,24 +28,18 @@ platform:
 
 # Scripts that run after cloning repository
 install:
-  - cmd: echo Download lazarus-1.6.4-fpc-3.0.2-win32
-  - cmd: curl -fsSL -o lazarus-1.6.4-fpc-3.0.2-win32.exe "https://www.dropbox.com/s/4l1h2ku0srtscfo/lazarus-1.6.4-fpc-3.0.2-win32.exe?dl=1"
-  - cmd: echo Installing lazarus-1.6.4-fpc-3.0.2-win32
-  - cmd: lazarus-1.6.4-fpc-3.0.2-win32.exe /verysilent
-  - cmd: echo Downloading lazarus-1.6.4-fpc-3.0.2-cross-x86_64-win64-win32
-  - cmd: curl -fsSL -o lazarus-1.6.4-fpc-3.0.2-cross-x86_64-win64-win32.exe "https://www.dropbox.com/s/vulmr71jdnokxuj/lazarus-1.6.4-fpc-3.0.2-cross-x86_64-win64-win32.exe?dl=1"
-  - cmd: echo Installing lazarus-1.6.4-fpc-3.0.2-cross-x86_64-win64-win32
-  - cmd: lazarus-1.6.4-fpc-3.0.2-cross-x86_64-win64-win32.exe /verysilent
-  - cmd: echo Downloading lazarus-1.6.4-fpc-3.0.2-cross-arm-wince-win32
-  - cmd: curl -fsSL -o lazarus-1.6.4-fpc-3.0.2-cross-arm-wince-win32.exe "https://www.dropbox.com/s/7vyye0rz6cj1ad0/lazarus-1.6.4-fpc-3.0.2-cross-arm-wince-win32.exe?dl=1"
-  - cmd: echo Installing lazarus-1.6.4-fpc-3.0.2-cross-arm-wince-win32.exe
-  - cmd: lazarus-1.6.4-fpc-3.0.2-cross-arm-wince-win32.exe /verysilent
-  - cmd: rmdir /S /Q c:\lazarus\docs
-  - cmd: rmdir /S /Q c:\lazarus\examples
+  - cmd: echo Download lazarus-2.2.2-fpc-3.2.2-win64
+  - cmd: curl -fsSL -o lazarus-2.2.2-fpc-3.2.2-win64.exe "https://master.dl.sourceforge.net/project/lazarus/Lazarus Windows 64 bits/Lazarus 2.2.2/lazarus-2.2.2-fpc-3.2.2-win64.exe?viasf=1"
+  - cmd: echo Installing lazarus-2.2.2-fpc-3.2.2-win64
+  - cmd: lazarus-2.2.2-fpc-3.2.2-win64.exe /verysilent
+  - cmd: echo Download lazarus-2.2.2-fpc-3.2.2-cross-i386-win32-win64
+  - cmd: curl -fsSL -o lazarus-2.2.2-fpc-3.2.2-cross-i386-win32-win64.exe "https://master.dl.sourceforge.net/project/lazarus/Lazarus Windows 64 bits/Lazarus 2.2.2/lazarus-2.2.2-fpc-3.2.2-cross-i386-win32-win64.exe?viasf=1"
+  - cmd: echo Installing lazarus-2.2.2-fpc-3.2.2-cross-i386-win32-win64
+  - cmd: lazarus-2.2.2-fpc-3.2.2-cross-i386-win32-win64.exe /verysilent
 
 # Build scripts
 build_script:
-  - cmd: for /F "tokens=*" %%i in ('dir /A:-D /B /S "*.lpi"') do ("c:\lazarus\lazbuild" "%%i" --build-all)
+  - cmd: c:\lazarus\lazbuild --build-mode="Release 64-Bit" "Cheat Engine\cheatengine.lpi"
 
 # scripts to run after build
 after_build:
